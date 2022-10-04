@@ -106,7 +106,7 @@ This database can be obtained at the address https://www.cs.toronto.edu/~kriz/ci
       - `labels_test` the corresponding labels, and
       - `k` the number of of neighbors.
     This function must return the classification rate (accuracy).
-4. For `split_factor=0.9`, plot the variation of the accuracy as a function of `k` (from 1 to 20). Save the plot as an image in the directory `results`.
+4. For `split_factor=0.9`, plot the variation of the accuracy as a function of `k` (from 1 to 20). Save the plot as an image named `knn.png` in the directory `results`.
 
 ## Artificial Neural Network
 
@@ -176,15 +176,16 @@ For classification task, we prefer to use a binary cross-entropy loss. We also w
 11. Write a function `learn_once_cross_entropy` taking the the same parameters as `learn_once_mse` and returns the same outputs. The function must use a cross entropy loss and the last layer of the network must be a softmax. We admit that $`\frac{\partial C}{\partial Z^{(2)}} = A^{(2)} - Y`$. Where $`Y`$ is a one-hot vector encoding the label.
 12. Write the function `evaluate_mlp` taking as parameter:
       - `data_train`, `labels_train`, `data_test`, `labels_test`, the training and testing data,
+      - `d_h` the number of neurons in the hidden layer
       - `learning_rate` the learning rate, and
       - `num_epoch` the number of training epoch,
     
     that train an MLP classifier and return the test accuracy computed on the test set.
-
+13. For `split_factor=0.9`, `d_h=64`, `learning_rate=0.1` and `num_epoch=10_000`, plot the evolution of accuracy across learning epochs. Save the graph as an image named `mlp.png` in the `results` directory.
 
 ## To be handed in
 
-This work (KNN and NN) must be done individually. The expected output is the archive containing the complete, minimal and functional code corresponding to the tutorial on https://gitlab.ec-lyon.fr.
+This work (KNN and MLP) must be done individually. The expected output is the archive containing the complete, minimal and functional code corresponding to the tutorial on https://gitlab.ec-lyon.fr.
 To see the details of the expected, see the Evaluation section.
 
 The last commit is inteded before Monday, November 16, 2022.
@@ -212,37 +213,24 @@ Your code must be properly documented. It must follow the [PEP257 recommendation
 Your project must be properly licensed. Since it is your project, it is up to you to choose your license. In general, the license consists of a file named LICENSE in the root directory. A useful resource to help you choose: https://choosealicense.com/
 
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
-
-
 ## Evaluation
 
-Dans ce document, j'explique tous les point de controle que je vais regarder. Je peux donner une aide sur comment obtenir rapidement le résultat. La structure est
+In this section, we present all the items on which the work is evaluated.
 
-- [ ] The project ...
-    To check if it is correct you can do ...
-
-- [ ] The project has the right structure.
+- ( /1) The function `read_cifar_batch` works as described
+- ( /1) The function `read_cifar` works as described
+- ( /1) The `split_dataset` works as described
+- ( /1) The function `distance_matrix` works as described
+- ( /1) The function `knn_predict` works as described
+- ( /1) The graph `knn.png` shows the results obtained
+- ( /3) Demonstrations of back propagation are done without error.
+- ( /1) The function `learn_once_mse` works as described
+- ( /1) The function `one_hot` works as described
+- ( /1) The function `learn_once_cross_entropy` works as described
+- ( /1) The function `evaluate_mlp` works as described 
+- ( /1) The graph `mlp.png` shows the results obtained 
+- ( /3) Unitest coverage
+- ( /2) The guidlines about the project structure are all followed
 
     To check if the project has the right structure, install `tree` and run from the project directory:
 
@@ -254,10 +242,12 @@ Dans ce document, j'explique tous les point de controle que je vais regarder. Je
 
     1 directory, 1 file
     ```
+    The output must strictly match the one provided above.
 
-    The output must strictly match the one provided above. 
-
-- [ ] The project is properly formatted.
+- ( /1) Project has a license
+- ( /2) All functions are documented
+- ( /1) All functions are documented and follow the pydocstyle 
+- ( /1) The code is properly formatted
 
     To check if the code is properly formatted, install [Black](https://github.com/psf/black) and run from the project repository:
 
@@ -270,10 +260,3 @@ Dans ce document, j'explique tous les point de controle que je vais regarder. Je
     ```
 
     These two tests must pass without error. 
-
-- [ ] The project is properly documented.
-
-
-- [ ] The project is properly licensed.
-- [ ] All the unit test pass
-- [ ] The project has good coverage.
