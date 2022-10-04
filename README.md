@@ -106,8 +106,7 @@ This database can be obtained at the address https://www.cs.toronto.edu/~kriz/ci
       - `labels_test` the corresponding labels, and
       - `k` the number of of neighbors.
     This function must return the classification rate (accuracy).
-4. For `split_factor=0.9`, plot the variation of the accuracy as a function of `k` (from 1 to 20). Save the plot as an image under the directory `results`.
-5. For `split_factor=0.9`, plot the variation of the accuracy as a function of `k` (from 1 to 20). Save the plot as an image in the directory `results`.
+4. For `split_factor=0.9`, plot the variation of the accuracy as a function of `k` (from 1 to 20). Save the plot as an image in the directory `results`.
 
 ## Artificial Neural Network
 
@@ -177,8 +176,8 @@ For classification task, we prefer to use a binary cross-entropy loss. We also w
 11. Write a function `learn_once_cross_entropy` taking the the same parameters as `learn_once_mse` and returns the same outputs. The function must use a cross entropy loss and the last layer of the network must be a softmax. We admit that $`\frac{\partial C}{\partial Z^{(2)}} = A^{(2)} - Y`$. Where $`Y`$ is a one-hot vector encoding the label.
 12. Write the function `evaluate_mlp` taking as parameter:
       - `data_train`, `labels_train`, `data_test`, `labels_test`, the training and testing data,
-      - `learning_rate` the learning rate,
-      - `num_epoch` the number of training epoch
+      - `learning_rate` the learning rate, and
+      - `num_epoch` the number of training epoch,
     
     that train an MLP classifier and return the test accuracy computed on the test set.
 
