@@ -93,7 +93,7 @@ This database can be obtained at the address https://www.cs.toronto.edu/~kriz/ci
 ## k-nearest neighbors
 
 1. Create a Python fil named `knn.py`. Write the function `distance_matrix` taking as parameters two matrices and returns `dists`, the L2 Euclidean distance matrix. The computation must be done only with matrix manipulation (no loops).
-    Hint: $(a-b)^2 = a^2 + b^2 - 2 ab$
+    Hint: $`(a-b)^2 = a^2 + b^2 - 2 ab`$
 2. Write the function `knn_predict` taking as parameters:
       - `dists` the distance matrix between the train set and the test set, 
       - `labels_train` the training labels, and
@@ -116,18 +116,18 @@ The objective here is to develop a classifier based on a multilayer perceptron (
 First of all, let's focus on the backpropagation of the gradient with an example.
 Let's consider a network with a hidden layer.
 
-The weight matrix of the layer $L$ is denoted $W^{(L)}$. The bias vector of the layer $L$ is denoted $B^{(L)}$. We choose the sigmoid function, denoted $\sigma$, as the activation function. The output vector of the layer $L$ before activation is denoted $Z^{(L)}$. The output vector of the layer $L$ after activation is denoted $A^{(L)}$. By convention, we note $A^{(0)}$ the network input vector. Thus $Z^{(L+1)} = W^{(L+1)}A^{(L)} + B^{(L+1)}$ and $A^{(L+1)} = \sigma\left(Z^{(L+1)}\right)$. In our example, the output is $\hat{Y} = A^{(2)}$.
-Let $Y$ be the desired output. We use mean squared error (MSE) as the cost function. Thus, the cost is $C = \frac{1}{N_{out}}\sum_{i=1}^{N_{out}} (\hat{y_i} - y_i)^2$.
+The weight matrix of the layer $`L`$ is denoted $`W^{(L)}`$. The bias vector of the layer $`L`$ is denoted $`B^{(L)}`$. We choose the sigmoid function, denoted $`\sigma`$, as the activation function. The output vector of the layer $`L`$ before activation is denoted $`Z^{(L)}`$. The output vector of the layer $`L`$ after activation is denoted $`A^{(L)}`$. By convention, we note $`A^{(0)}`$ the network input vector. Thus $`Z^{(L+1)} = W^{(L+1)}A^{(L)} + B^{(L+1)}`$ and $`A^{(L+1)} = \sigma\left(Z^{(L+1)}\right)`$. In our example, the output is $`\hat{Y} = A^{(2)}`$.
+Let $`Y`$ be the desired output. We use mean squared error (MSE) as the cost function. Thus, the cost is $`C = \frac{1}{N_{out}}\sum_{i=1}^{N_{out}} (\hat{y_i} - y_i)^2`$.
 
 1. Prove that $`\sigma' = \sigma \times (1-\sigma)`$
-2. Express $\frac{\partial C}{\partial A^{(2)}}$, i.e. the vector of $\frac{\partial C}{\partial a^{(2)}_i}$ as a function of $A^{(2)}$ and $Y$.
-3. Using the chaining rule, express $\frac{\partial C}{\partial Z^{(2)}}$, i.e. the vector of $\frac{\partial C}{\partial z^{(2)}_i}$ as a function of $\frac{\partial C}{\partial A^{(2)}}$ and $A^{(2)}$.
-4. Similarly, express $\frac{\partial C}{\partial W^{(2)}}$, i.e. the matrix of $\frac{\partial C}{\partial w^{(2)}_{i,j}}$ as a function of $\frac{\partial C}{\partial Z^{(2)}}$ and $A^{(1)}$.
-5. Similarly, express $\frac{\partial C}{\partial B^{(2)}}$ as a function of $\frac{\partial C}{\partial Z^{(2)}}$.
-6. Similarly, express $\frac{\partial C}{\partial A^{(1)}}$ as a function of $\frac{\partial C}{\partial Z^{(2)}}$ and $W^{(2)}$.
-7. Similarly, express $\frac{\partial C}{\partial Z^{(1)}}$ as a function of $\frac{\partial C}{\partial A^{(1)}}$ and $A^{(1)}$.
-8. Similarly, express $\frac{\partial C}{\partial W^{(1)}}$ as a function of $\frac{\partial C}{\partial Z^{(1)}}$ and $A^{(0)}$.
-9. Similarly, express $\frac{\partial C}{\partial B^{(1)}}$ as a function of $\frac{\partial C}{\partial Z^{(1)}}$.
+2. Express $`\frac{\partial C}{\partial A^{(2)}}`$, i.e. the vector of $`\frac{\partial C}{\partial a^{(2)}_i}`$ as a function of $`A^{(2)}`$ and $`Y`$.
+3. Using the chaining rule, express $`\frac{\partial C}{\partial Z^{(2)}}`$, i.e. the vector of $`\frac{\partial C}{\partial z^{(2)}_i}`$ as a function of $`\frac{\partial C}{\partial A^{(2)}}`$ and $`A^{(2)}`$.
+4. Similarly, express $`\frac{\partial C}{\partial W^{(2)}}`$, i.e. the matrix of $`\frac{\partial C}{\partial w^{(2)}_{i,j}}`$ as a function of $`\frac{\partial C}{\partial Z^{(2)}}`$ and $`A^{(1)}`$.
+5. Similarly, express $`\frac{\partial C}{\partial B^{(2)}}`$ as a function of $`\frac{\partial C}{\partial Z^{(2)}}`$.
+6. Similarly, express $`\frac{\partial C}{\partial A^{(1)}}`$ as a function of $`\frac{\partial C}{\partial Z^{(2)}}`$ and $`W^{(2)}`$.
+7. Similarly, express $`\frac{\partial C}{\partial Z^{(1)}}`$ as a function of $`\frac{\partial C}{\partial A^{(1)}}`$ and $`A^{(1)}`$.
+8. Similarly, express $`\frac{\partial C}{\partial W^{(1)}}`$ as a function of $`\frac{\partial C}{\partial Z^{(1)}}`$ and $`A^{(0)}`$.
+9. Similarly, express $`\frac{\partial C}{\partial B^{(1)}}`$ as a function of $`\frac{\partial C}{\partial Z^{(1)}}`$.
 
 Below is a Python code performing a forward pass and computing the cost in a network containing a hidden layer and using the sigmoid function as the activation function:
 
@@ -167,7 +167,7 @@ print(loss)
 For classification task, we prefer to use a binary cross-entropy loss. We also want to replace the last activation layer of the network with a softmax layer.
 
 10. Write the function `one_hot` taking a (n)-D array as parameters and returning the corresponding (n+1)-D one-hot matrix.
-11. Write a function `learn_once_cross_entropy` taking the the same parameters as `learn_once_mse` and returns the same outputs. The function must use a cross entropy loss and the last layer of the network must be a softmax. We admit that $\frac{\partial C}{\partial Z^{(2)}} = A^{(2)} - Y$. Where $Y$ is a one-hot vector encoding the label.
+11. Write a function `learn_once_cross_entropy` taking the the same parameters as `learn_once_mse` and returns the same outputs. The function must use a cross entropy loss and the last layer of the network must be a softmax. We admit that $`\frac{\partial C}{\partial Z^{(2)}} = A^{(2)} - Y`$. Where $`Y`$ is a one-hot vector encoding the label.
 12. Write the function `evaluate_mlp` taking as parameter:
       - `data_train`, `labels_train`, `data_test`, `labels_test`, the training and testing data,
       - `learning_rate` the learning rate,
