@@ -117,7 +117,7 @@ First of all, let's focus on the backpropagation of the gradient with an example
 Let's consider a network with a hidden layer.
 
 The weight matrix of the layer $`L`$ is denoted $`W^{(L)}`$. The bias vector of the layer $`L`$ is denoted $`B^{(L)}`$. We choose the sigmoid function, denoted $`\sigma`$, as the activation function. The output vector of the layer $`L`$ before activation is denoted $`Z^{(L)}`$. The output vector of the layer $`L`$ after activation is denoted $`A^{(L)}`$. By convention, we note $`A^{(0)}`$ the network input vector. Thus $`Z^{(L+1)} = W^{(L+1)}A^{(L)} + B^{(L+1)}`$ and $`A^{(L+1)} = \sigma\left(Z^{(L+1)}\right)`$. In our example, the output is $`\hat{Y} = A^{(2)}`$.
-Let $`Y`$ be the desired output. We use mean squared error (MSE) as the cost function. Thus, the cost is $`C = \frac{1}{N_{out}}\sum_{i=1}^{N_{out}} (\hat{y_i} - y_i)^2`$.
+Let $`Y`$ be the labels (desired output). We use mean squared error (MSE) as the cost function. Thus, the cost is $`C = \frac{1}{N_{out}}\sum_{i=1}^{N_{out}} (\hat{y_i} - y_i)^2`$.
 
 1. Prove that $`\sigma' = \sigma \times (1-\sigma)`$
 2. Express $`\frac{\partial C}{\partial A^{(2)}}`$, i.e. the vector of $`\frac{\partial C}{\partial a^{(2)}_i}`$ as a function of $`A^{(2)}`$ and $`Y`$.
@@ -138,8 +138,8 @@ N = 30  # number of input data
 d_in = 3  # input dimension
 d_h = 3  # number of neurons in the hidden layer
 d_out = 2  # output dimension (number of neurons of the output layer)
-data = np.random.rand(N, d_in)  # create a random input
-labels = np.random.rand(N, d_out)  # create a random desired output
+data = np.random.rand(N, d_in)  # create a random data
+labels = np.random.rand(N, d_out)  # create a random labels
 
 # Forward pass
 a0 = data # the data are the input of the first layer
