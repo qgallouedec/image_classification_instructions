@@ -138,6 +138,13 @@ N = 30  # number of input data
 d_in = 3  # input dimension
 d_h = 3  # number of neurons in the hidden layer
 d_out = 2  # output dimension (number of neurons of the output layer)
+
+# Random initialization of the network weights and biaises
+w1 = 2 * np.random.rand(d_in, d_h) - 1  # first layer weights
+b1 = np.zeros((1, d_h))  # first layer biaises
+w2 = 2 * np.random.rand(d_h, d_out) - 1  # second layer weights
+b2 = np.zeros((1, d_out))  # second layer biaises
+
 data = np.random.rand(N, d_in)  # create a random data
 labels = np.random.rand(N, d_out)  # create a random labels
 
