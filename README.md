@@ -229,7 +229,7 @@ In this section, we present all the items on which the work is evaluated.
 
 ## Contribute
 
-This tutorial may contain errors, inaccuracies, or areas for improvement. Feel free to contribute to its improvement by [opening an issue](https://gitlab.ec-lyon.fr/qgalloue/image_classification_instructions/-/issues).
+This tutorial may contain errors, inaccuracies, typos or areas for improvement. Feel free to contribute to its improvement by [opening an issue](https://gitlab.ec-lyon.fr/qgalloue/image_classification_instructions/-/issues).
 
 ## Author
 
