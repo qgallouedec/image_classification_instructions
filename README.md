@@ -15,7 +15,7 @@ In this tutorial we use Python 3.7 or higher. Make sure it is properly installed
 We assume that `git` is installed, and that you are familiar with the basic `git` commands. (Optionnaly, you can use GitHub Desktop.)
 We also assume that you have access to the [ECL GitLab](https://gitlab.ec-lyon.fr/). If necessary, please consult [this tutorial](https://gitlab.ec-lyon.fr/edelland/inf_tc2/-/blob/main/Tutoriel_gitlab/tutoriel_gitlab.md).
 
-**Important note**: In this tutorial, you will be asked to write functions. If you want to test the correct operation of your functions in the same file, you must use the statement ``if __name__ == "__main__":`:
+**Important note**: In this tutorial, you will be asked to write functions. If you want to test the correct operation of your functions in the same file, you must use the statement `if __name__ == "__main__":`:
 
 ```python
 def func():
