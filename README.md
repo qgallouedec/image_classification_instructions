@@ -1,8 +1,10 @@
-# Image Classification Instructions
+# Image Classification Tutorial
+
+MOD 3.2 - Deep learning and AI / Tutorial 1
 
 ## Introduction
 
-The objective of this tutorial is to write a complete image classification program in Python. 
+The objective of this tutorial is to write a complete image classification program in Python.
 Two classification models will be successively developed and tested: k-nearest neighbors (KNN) and neural networks (NN).
 
 ### Before you start
@@ -27,8 +29,7 @@ We assume that you have access to the [ECL GitLab](https://gitlab.ec-lyon.fr/).
    - Visibility Level: public
    - Project Configuration: Initialize repository with a README
 4. Clone the repository.
-   
-```bash
+  $`L`$```bash
 git clone https://gitlab.ec-lyon.fr/<user>/image-classification
 ```
 
@@ -75,13 +76,13 @@ This database can be obtained at the address https://www.cs.toronto.edu/~kriz/ci
 1. Create a folder named `data` in which you move the downloaded `cifar-10-batches-py` folder. Make sure that the `data` folder is ignored when commiting.
 2. Create a Python file named `read_cifar.py`. Write the function `read_cifar_batch` taking as parameter the path of a single batch as a string, and returning:
       - a matrix `data` of size (`batch_size` x `data_size`) where `batch_size` is the number of available data in the batch, and `data_size` the dimension of these data (number of numerical values describing the data), and
-      - a vector `labels` of size `batch_size` whose values correspond to the class code of the data of the same index in `data`. 
+      - a vector `labels` of size `batch_size` whose values correspond to the class code of the data of the same index in `data`.
     `data` and `labels` must be `np.float32` arrays.
-3. Write the function `read_cifar` taking as parameter the path of the directory containing the six batches (five `data_batch` and one `test_batch`) as a string, and returning 
+3. Write the function `read_cifar` taking as parameter the path of the directory containing the six batches (five `data_batch` and one `test_batch`) as a string, and returning
       - a matrix `data` of shape (`batch_size` x `data_size`) where `batch_size` is the number of available data in all batches (including `test_batch`), and
-      - a vector `labels` of size `batch_size` whose values correspond to the class code of the data of the same index in `data`. 
+      - a vector `labels` of size `batch_size` whose values correspond to the class code of the data of the same index in `data`.
     `data` and `labels` must be `np.float32` arrays.
-4. Write the function `split_dataset` which splits the dataset into a training set and a test set. The data must be shuffled, so that two successive calls shouldn't give the same output. This function takes as parameter 
+4. Write the function `split_dataset` which splits the dataset into a training set and a test set. The data must be shuffled, so that two successive calls shouldn't give the same output. This function takes as parameter
       - `data` and `labels`, two arrays that have the same size in the first dimension.
       - `split`, a float between 0 and 1 which determines the split factor of the training set with respect to the test set.
     This function must return
@@ -95,7 +96,7 @@ This database can be obtained at the address https://www.cs.toronto.edu/~kriz/ci
 1. Create a Python fil named `knn.py`. Write the function `distance_matrix` taking as parameters two matrices and returns `dists`, the L2 Euclidean distance matrix. The computation must be done only with matrix manipulation (no loops).
     Hint: $`(a-b)^2 = a^2 + b^2 - 2 ab`$
 2. Write the function `knn_predict` taking as parameters:
-      - `dists` the distance matrix between the train set and the test set, 
+      - `dists` the distance matrix between the train set and the test set,
       - `labels_train` the training labels, and
       - `k` the number of of neighbors.
     This function must return the predicted labels for the elements of `data_train`.
@@ -165,7 +166,7 @@ print(loss)
       - `data` a matrix of shape (`batch_size` x `d_in`),
       - `labels` a matrix of shape (`batch_size` x `d_out`),
       - `learning_rate` the learning rate,
-  
+
     that perform one gradient descent step, and returns:
       - `w1`, `b1`, `w2` and `b2` the updated weights and biases of the network,
       - `loss` the loss, for monitoring purpose.
@@ -179,7 +180,7 @@ For classification task, we prefer to use a binary cross-entropy loss. We also w
       - `d_h` the number of neurons in the hidden layer
       - `learning_rate` the learning rate, and
       - `num_epoch` the number of training epoch,
-    
+
     that train an MLP classifier and return the test accuracy computed on the test set.
 13. For `split_factor=0.9`, `d_h=64`, `learning_rate=0.1` and `num_epoch=10_000`, plot the evolution of accuracy across learning epochs. Save the graph as an image named `mlp.png` in the `results` directory.
 
@@ -227,8 +228,8 @@ In this section, we present all the items on which the work is evaluated.
 - ( /1) The function `learn_once_mse` works as described
 - ( /1) The function `one_hot` works as described
 - ( /1) The function `learn_once_cross_entropy` works as described
-- ( /1) The function `evaluate_mlp` works as described 
-- ( /1) The graph `mlp.png` shows the results obtained 
+- ( /1) The function `evaluate_mlp` works as described
+- ( /1) The graph `mlp.png` shows the results obtained
 - ( /3) Unitest coverage
 - ( /2) The guidlines about the project structure are all followed
 
@@ -246,7 +247,7 @@ In this section, we present all the items on which the work is evaluated.
 
 - ( /1) Project has a license
 - ( /2) All functions are documented
-- ( /1) All functions are documented and follow the pydocstyle 
+- ( /1) All functions are documented and follow the pydocstyle
 - ( /1) The code is properly formatted
 
     To check if the code is properly formatted, install [Black](https://github.com/psf/black) and run from the project repository:
@@ -259,4 +260,4 @@ In this section, we present all the items on which the work is evaluated.
     $ isort --check . -s env
     ```
 
-    These two tests must pass without error. 
+    These two tests must pass without error.
