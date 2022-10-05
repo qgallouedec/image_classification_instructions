@@ -16,6 +16,11 @@ We assume that `git` is installed, and that you are familiar with the basic `git
 We also assume that you have access to the [ECL GitLab](https://gitlab.ec-lyon.fr/). If necessary, please consult [this tutorial](https://gitlab.ec-lyon.fr/edelland/inf_tc2/-/blob/main/Tutoriel_gitlab/tutoriel_gitlab.md).
 
 
+### README
+
+Your repository must contain a text file `README.md` that introduces the project in a **short way**. To learn how to write a readme, visit https://www.makeareadme.com. We recommend that you include at least the sections _Description_ and _Usage_.
+
+
 ### Code style
 
 Your code must follow the [PEP8 recommendations](https://peps.python.org/pep-0008/). To help you format your code properly, you can use [Black](https://black.readthedocs.io/en/stable/). To help you sort your imports, you can use [isort](https://pycqa.github.io/isort/).
@@ -92,7 +97,7 @@ First of all, let's focus on the backpropagation of the gradient with an example
 
 
 The weight matrix of the layer $`L`$ is denoted $`W^{(L)}`$. The bias vector of the layer $`L`$ is denoted $`B^{(L)}`$. We choose the sigmoid function, denoted $`\sigma`$, as the activation function. The output vector of the layer $`L`$ before activation is denoted $`Z^{(L)}`$. The output vector of the layer $`L`$ after activation is denoted $`A^{(L)}`$. By convention, we note $`A^{(0)}`$ the network input vector. Thus $`Z^{(L+1)} = W^{(L+1)}A^{(L)} + B^{(L+1)}`$ and $`A^{(L+1)} = \sigma\left(Z^{(L+1)}\right)`$. Let's consider a network with one hidden layer. Thus, the output is $`\hat{Y} = A^{(2)}`$.
-Let $`Y`$ be the labels (desired output). We use mean squared error (MSE) as the cost function. Thus, the cost is $`C = \frac{1}{N_{out}}\sum_{i=1}^{N_{out}} (\hat{y_i} - y_i)^2`$.
+Let $`Y`$ be the target (desired output). We use mean squared error (MSE) as the cost function. Thus, the cost is $`C = \frac{1}{N_{out}}\sum_{i=1}^{N_{out}} (\hat{y_i} - y_i)^2`$.
 
 1. Prove that $`\sigma' = \sigma \times (1-\sigma)`$
 2. Express $`\frac{\partial C}{\partial A^{(2)}}`$, i.e. the vector of $`\frac{\partial C}{\partial a^{(2)}_i}`$ as a function of $`A^{(2)}`$ and $`Y`$.
@@ -121,7 +126,7 @@ w2 = 2 * np.random.rand(d_h, d_out) - 1  # second layer weights
 b2 = np.zeros((1, d_out))  # second layer biaises
 
 data = np.random.rand(N, d_in)  # create a random data
-labels = np.random.rand(N, d_out)  # create a random labels
+targets = np.random.rand(N, d_out)  # create a random targets
 
 # Forward pass
 a0 = data # the data are the input of the first layer
@@ -129,24 +134,31 @@ z1 = np.matmul(a0, w1) + b1  # input of the hidden layer
 a1 = 1 / (1 + np.exp(-z1))  # output of the hidden layer (sigmoid activation function)
 z2 = np.matmul(a1, w2) + b2  # input of the output layer
 a2 = 1 / (1 + np.exp(-z2))  # output of the output layer (sigmoid activation function)
-labels_pred = a2  # the predicted values are the outputs of the output layer
+predictions = a2  # the predicted values are the outputs of the output layer
 
 # Compute loss (MSE)
-loss = np.mean(np.square(labels_pred - labels))
+loss = np.mean(np.square(predictions - targets))
 print(loss)
 ```
 
 10. Create a Python file named `mlp.py`. Use the above code to write the function `learn_once_mse` taking as parameters:
       - `w1`, `b1`, `w2` and `b2` the weights and biases of the network,
       - `data` a matrix of shape (`batch_size` x `d_in`),
-      - `labels` a matrix of shape (`batch_size` x `d_out`),
+      - `targets` a matrix of shape (`batch_size` x `d_out`),
       - `learning_rate` the learning rate,
 
     that perform one gradient descent step, and returns:
       - `w1`, `b1`, `w2` and `b2` the updated weights and biases of the network,
       - `loss` the loss, for monitoring purpose.
 
-For classification task, we prefer to use a binary cross-entropy loss. We also want to replace the last activation layer of the network with a softmax layer.
+For the classification task, the target is the one-hot encoding of the label. Example: 
+```
+one_hot(labels=[1 2 0]) = [[0 1 0]
+                           [0 0 1]
+                           [1 0 0]]
+```
+
+Instead of the MSE loss, we prefer to use a binary cross-entropy loss. We also want to replace the last activation layer of the network with a softmax layer.
 
 10. Write the function `one_hot` taking a (n)-D array as parameters and returning the corresponding (n+1)-D one-hot matrix.
 11. Write a function `learn_once_cross_entropy` taking the the same parameters as `learn_once_mse` and returns the same outputs. The function must use a cross entropy loss and the last layer of the network must be a softmax. We admit that $`\frac{\partial C}{\partial Z^{(2)}} = A^{(2)} - Y`$. Where $`Y`$ is a one-hot vector encoding the label.
@@ -156,15 +168,8 @@ For classification task, we prefer to use a binary cross-entropy loss. We also w
       - `learning_rate` the learning rate, and
       - `num_epoch` the number of training epoch,
 
-    that train an MLP classifier and return the test accuracy computed on the test set.
-13. For `split_factor=0.9`, `d_h=64`, `learning_rate=0.1` and `num_epoch=10_000`, plot the evolution of accuracy across learning epochs. Save the graph as an image named `mlp.png` in the `results` directory.
-
-## To be handed in
-
-This work (KNN and MLP) must be done individually. The expected output is the archive containing the complete, minimal and functional code corresponding to the tutorial on https://gitlab.ec-lyon.fr.
-To see the details of the expected, see the Evaluation section.
-
-The last commit is inteded before Monday, November 16, 2022.
+    that train an MLP classifier and return the train and (accuracy computed on the train set) and the test accuracy (accuracy computed on the test set).
+13. For `split_factor=0.9`, `d_h=64`, `learning_rate=0.1` and `num_epoch=10_000`, plot the evolution of accuracies across learning epochs. Save the graph as an image named `mlp.png` in the `results` directory.
 
 
 ## To go further
@@ -185,6 +190,14 @@ Experiments will have to be carried out by studying the following variations:
 - use of N-fold cross-validation instead of a fixed learning and testing subset.
 
 
+## To be handed in
+
+This work (KNN and MLP) must be done individually. The expected output is the repository containing the complete, minimal and functional code corresponding to the tutorial on https://gitlab.ec-lyon.fr.
+To see the details of the expected, see the Evaluation section.
+
+The last commit is due before 11:59 pm on Sunday, November 6, 2022. Subsequent commits will not be considered.
+
+
 ## Evaluation
 
 In this section, we present all the items on which the work is evaluated.
@@ -194,40 +207,21 @@ In this section, we present all the items on which the work is evaluated.
 - ( /1) The `split_dataset` works as described
 - ( /1) The function `distance_matrix` works as described
 - ( /1) The function `knn_predict` works as described
+- ( /1) The function `evaluate_knn` works as described
 - ( /1) The graph `knn.png` shows the results obtained
-- ( /3) Demonstrations of back propagation are done without error.
 - ( /1) The function `learn_once_mse` works as described
 - ( /1) The function `one_hot` works as described
 - ( /1) The function `learn_once_cross_entropy` works as described
 - ( /1) The function `evaluate_mlp` works as described
 - ( /1) The graph `mlp.png` shows the results obtained
-- ( /3) Unitest coverage
+- ( /1) The project has a good README.
 - ( /2) The guidlines about the project structure are all followed
-
-    To check if the project has the right structure, install `tree` and run from the project directory:
-
-    ```bash
-    $ tree -I 'env|*__pycache__*'
-    .
-    └── tests
-        └── test_knn.py
-
-    1 directory, 1 file
-    ```
-    The output must strictly match the one provided above.
-- ( /1) Project has a license
 - ( /2) All functions are documented
 - ( /1) All functions are documented and follow the pydocstyle
 - ( /1) The code is properly formatted
 
-    To check if the code is properly formatted, install [Black](https://github.com/psf/black) and run from the project repository:
+**Bonus**
 
-    ```bash
-    $ black --check . --exclude env
-    ```
-
-    ```bash
-    $ isort --check . -s env
-    ```
-
-    These two tests must pass without error.
+- ( /1) Project has a license
+- ( /2) Unitest coverage
+- ( /2) Deep dive into the classifier
