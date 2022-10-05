@@ -1,4 +1,4 @@
-# Tutorial 1 :Image Classification 
+# Tutorial 1 : Image Classification 
 
 ## Introduction
 
