@@ -1,6 +1,7 @@
 # Image Classification Tutorial
 
-MOD 3.2 - Deep learning and AI / Tutorial 1
+MOD 4.6 Deep Learning & Artificial Intelligence: an introduction / Tutorial 1
+
 
 ## Introduction
 
@@ -9,63 +10,35 @@ Two classification models will be successively developed and tested: k-nearest n
 
 ### Before you start
 
-In this tutorial we use Python 3.9.14. Make sure you have this version of Python installed.
+In this tutorial we use Python 3.7 or above. Make sure it is properly installed.
 
-```bash
-% python3.9 --version
-Python 3.9.14
-```
+We assume that `git` is installed, and that you are familiar with the basic `git` commands. (Optionnaly, you can use GitHub Desktop.)
+We also assume that you have access to the [ECL GitLab](https://gitlab.ec-lyon.fr/). If necessary, please consult [this tutorial](https://gitlab.ec-lyon.fr/edelland/inf_tc2/-/blob/main/Tutoriel_gitlab/tutoriel_gitlab.md).
 
-We assume you are familiar with the `venv` module of Python and with basic `git` commands.
-We assume that you have access to the [ECL GitLab](https://gitlab.ec-lyon.fr/).
+
+### Code style
+
+Your code must follow the [PEP8 recommendations](https://peps.python.org/pep-0008/). To help you format your code properly, you can use [Black](https://black.readthedocs.io/en/stable/). To help you sort your imports, you and [isort](https://pycqa.github.io/isort/)
+
+
+### Docstring
+
+Your code must be properly documented. It must follow the [PEP257 recommendations](https://peps.python.org/pep-0257/). To help you document your code properly, you can use [pydocstyle](http://www.pydocstyle.org/en/stable/).
+
 
 ### Prepare your directory
 
-1. Connect to https://gitlab.ec-lyon.fr.
-2. Create a new blank project (`New project` then `Create blank project`).
-3. Fill in the form as follows.
+1. Create a new blank project on the ECL GitLab (`New project` then `Create blank project`).
+2. Fill in the form as follows.
    - Project name: `Image classification`.
    - Project slug: `image-classification`.
    - Visibility Level: public
    - Project Configuration: Initialize repository with a README
-4. Clone the repository.
-  $`L`$```bash
+3. Clone the repository.
+```bash
 git clone https://gitlab.ec-lyon.fr/<user>/image-classification
 ```
-
-### Prepare the Python envrionment
-
-1. In the project direcotry, create a virtual environment.
-
-```bash
-python3.9 -m venv env
-```
-
-2. Source the envrionement.
-
-```bash
-source env/bin/activate
-```
-
-3. Upgrade `pip`.
-
-```bash
-pip install --upgrade pip
-```
-
-4. The environment files should not be pushed to the remote directory. To have these files ignored when committing, create a `.gitignore` file containing `env`. Similarly, we want to ignore Python cache file, thus add `__pycache__` to `.gitignore`.
-5. In this project, we use `numpy` package for matrices manipulation and the `scikit-image` package for image manipulation. Thus, create a requirement file named `requirements.txt` containing:
-
-```txt
-numpy
-scikit-image
-```
-
-6. Install the above mentioned dependencies.
-
-```bash
-pip install -r requirements.txt
-```
+4. In this tutorial you will use files that should not be pushed to the remote repository. To ignore them when committing, you can put their path in a file named `.gitignore`. For simplicity, we use the [`.gitignore` file](https://github.com/github/gitignore/blob/main/Python.gitignore) recommended by GitHub for python projects.
 
 
 ## Prepare the CIFAR dataset
@@ -77,11 +50,11 @@ This database can be obtained at the address https://www.cs.toronto.edu/~kriz/ci
 2. Create a Python file named `read_cifar.py`. Write the function `read_cifar_batch` taking as parameter the path of a single batch as a string, and returning:
       - a matrix `data` of size (`batch_size` x `data_size`) where `batch_size` is the number of available data in the batch, and `data_size` the dimension of these data (number of numerical values describing the data), and
       - a vector `labels` of size `batch_size` whose values correspond to the class code of the data of the same index in `data`.
-    `data` and `labels` must be `np.float32` arrays.
+    `data` must be `np.float32` array and `labels` must be `np.int64` array.
 3. Write the function `read_cifar` taking as parameter the path of the directory containing the six batches (five `data_batch` and one `test_batch`) as a string, and returning
       - a matrix `data` of shape (`batch_size` x `data_size`) where `batch_size` is the number of available data in all batches (including `test_batch`), and
       - a vector `labels` of size `batch_size` whose values correspond to the class code of the data of the same index in `data`.
-    `data` and `labels` must be `np.float32` arrays.
+    `data` must be `np.float32` array and `labels` must be `np.int64` array.
 4. Write the function `split_dataset` which splits the dataset into a training set and a test set. The data must be shuffled, so that two successive calls shouldn't give the same output. This function takes as parameter
       - `data` and `labels`, two arrays that have the same size in the first dimension.
       - `split`, a float between 0 and 1 which determines the split factor of the training set with respect to the test set.
@@ -192,26 +165,22 @@ To see the details of the expected, see the Evaluation section.
 The last commit is inteded before Monday, November 16, 2022.
 
 
-## Additional requirements
+## To go further
 
 ### Unittest
 
-Your code must contain unit tests. All unit tests should be contained in the `tests` directory located at the root of the directory.
+Your code should contain unit tests. All unit tests should be contained in the `tests` directory located at the root of the directory.
 We choose to use [pytest](https://docs.pytest.org/en/7.1.x/). To help you write unit tests, you can consult the pytest documentation.
-
-
-### Code style
-
-Your code must strictly follow the [PEP8 recommendations](https://peps.python.org/pep-0008/). To help you format your code properly, you can use [Black](https://black.readthedocs.io/en/stable/). To help you sort your imports, you and [isort](https://pycqa.github.io/isort/)
-
-
-### Docstring
-
-Your code must be properly documented. It must follow the [PEP257 recommendations](https://peps.python.org/pep-0257/). To help you document your code properly, you can use [pydocstyle](http://www.pydocstyle.org/en/stable/).
 
 ### License
 
-Your project must be properly licensed. Since it is your project, it is up to you to choose your license. In general, the license consists of a file named LICENSE in the root directory. A useful resource to help you choose: https://choosealicense.com/
+Your project should be properly licensed. Since it is your project, it is up to you to choose your license. In general, the license consists of a file named LICENSE in the root directory. A useful resource to help you choose: https://choosealicense.com/
+
+### Deep dive into the classifier
+
+Experiments will have to be carried out by studying the following variations:
+- use image representation by descriptors (LBP, HOG, ...) instead of raw pixels using the `scikit-image` module.
+- use of N-fold cross-validation instead of a fixed learning and testing subset.
 
 
 ## Evaluation
@@ -244,7 +213,6 @@ In this section, we present all the items on which the work is evaluated.
     1 directory, 1 file
     ```
     The output must strictly match the one provided above.
-
 - ( /1) Project has a license
 - ( /2) All functions are documented
 - ( /1) All functions are documented and follow the pydocstyle
