@@ -192,7 +192,7 @@ Experiments will have to be carried out by studying the following variations:
 
 ## To be handed in
 
-This work (KNN and MLP) must be done individually. The expected output is the repository containing the complete, minimal and functional code corresponding to the tutorial on https://gitlab.ec-lyon.fr.
+This work must be done individually. The expected output is a repository on https://gitlab.ec-lyon.fr. It must contain the complete, minimal and functional code corresponding to this tutorial.
 To see the details of the expected, see the Evaluation section.
 
 The last commit is due before 11:59 pm on Sunday, November 6, 2022. Subsequent commits will not be considered.
