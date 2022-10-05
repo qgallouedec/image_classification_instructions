@@ -18,7 +18,7 @@ We also assume that you have access to the [ECL GitLab](https://gitlab.ec-lyon.f
 
 ### Code style
 
-Your code must follow the [PEP8 recommendations](https://peps.python.org/pep-0008/). To help you format your code properly, you can use [Black](https://black.readthedocs.io/en/stable/). To help you sort your imports, you and [isort](https://pycqa.github.io/isort/)
+Your code must follow the [PEP8 recommendations](https://peps.python.org/pep-0008/). To help you format your code properly, you can use [Black](https://black.readthedocs.io/en/stable/). To help you sort your imports, you can use [isort](https://pycqa.github.io/isort/).
 
 
 ### Docstring
