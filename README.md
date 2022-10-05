@@ -35,10 +35,10 @@ Your code must be properly documented. It must follow the [PEP257 recommendation
    - Visibility Level: public
    - Project Configuration: Initialize repository with a README
 3. Clone the repository.
-```bash
-git clone https://gitlab.ec-lyon.fr/<user>/image-classification
-```
-4. In this tutorial you will use files that should not be pushed to the remote repository. To ignore them when committing, you can put their path in a file named `.gitignore`. For simplicity, we use the [`.gitignore` file](https://github.com/github/gitignore/blob/main/Python.gitignore) recommended by GitHub for python projects.
+    ```bash
+    git clone https://gitlab.ec-lyon.fr/<user>/image-classification
+    ```
+4. In this tutorial you will use files that should not be pushed to the remote repository. To ignore them when committing, you can put their path in a file named `.gitignore`. For simplicity, we use the [`.gitignore` file](https://github.com/github/gitignore/blob/main/Python.gitignore) recommended by GitHub for Python projects.
 
 
 ## Prepare the CIFAR dataset
@@ -73,8 +73,8 @@ This database can be obtained at the address https://www.cs.toronto.edu/~kriz/ci
       - `labels_train` the training labels, and
       - `k` the number of of neighbors.
     This function must return the predicted labels for the elements of `data_train`.
+
     **Note:** if the memory occupation is too important, you can use several batches for the calculation of the distance matrix (loop on sub-batches of test data).
-    {: .note}
 3. Write the function `evaluate_knn` taking as parameters:
       - `data_train` the training data,
       - `labels_train` the corresponding labels,
