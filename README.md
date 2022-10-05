@@ -10,7 +10,7 @@ Two classification models will be successively developed and tested: k-nearest n
 
 ### Before you start
 
-In this tutorial we use Python 3.7 or above. Make sure it is properly installed.
+In this tutorial we use Python 3.7 or higher. Make sure it is properly installed. Make sure `numpy` is installed.
 
 We assume that `git` is installed, and that you are familiar with the basic `git` commands. (Optionnaly, you can use GitHub Desktop.)
 We also assume that you have access to the [ECL GitLab](https://gitlab.ec-lyon.fr/). If necessary, please consult [this tutorial](https://gitlab.ec-lyon.fr/edelland/inf_tc2/-/blob/main/Tutoriel_gitlab/tutoriel_gitlab.md).
@@ -73,6 +73,8 @@ This database can be obtained at the address https://www.cs.toronto.edu/~kriz/ci
       - `labels_train` the training labels, and
       - `k` the number of of neighbors.
     This function must return the predicted labels for the elements of `data_train`.
+    **Note:** if the memory occupation is too important, you can use several batches for the calculation of the distance matrix (loop on sub-batches of test data).
+    {: .note}
 3. Write the function `evaluate_knn` taking as parameters:
       - `data_train` the training data,
       - `labels_train` the corresponding labels,
