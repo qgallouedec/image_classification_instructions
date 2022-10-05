@@ -88,10 +88,10 @@ This database can be obtained at the address https://www.cs.toronto.edu/~kriz/ci
 
 The objective here is to develop a classifier based on a multilayer perceptron (MLP) neural network.
 
-First of all, let's focus on the backpropagation of the gradient with an example.
-Let's consider a network with a hidden layer.
+First of all, let's focus on the backpropagation of the gradient with an example. If you still have trouble understanding the intuition behind the back propagation of the gradient, check out this video: [3Blue1Brown/Backpropagation calculus | Chapter 4, Deep learning](https://www.youtube.com/watch?v=tIeHLnjs5U8).
 
-The weight matrix of the layer $`L`$ is denoted $`W^{(L)}`$. The bias vector of the layer $`L`$ is denoted $`B^{(L)}`$. We choose the sigmoid function, denoted $`\sigma`$, as the activation function. The output vector of the layer $`L`$ before activation is denoted $`Z^{(L)}`$. The output vector of the layer $`L`$ after activation is denoted $`A^{(L)}`$. By convention, we note $`A^{(0)}`$ the network input vector. Thus $`Z^{(L+1)} = W^{(L+1)}A^{(L)} + B^{(L+1)}`$ and $`A^{(L+1)} = \sigma\left(Z^{(L+1)}\right)`$. In our example, the output is $`\hat{Y} = A^{(2)}`$.
+
+The weight matrix of the layer $`L`$ is denoted $`W^{(L)}`$. The bias vector of the layer $`L`$ is denoted $`B^{(L)}`$. We choose the sigmoid function, denoted $`\sigma`$, as the activation function. The output vector of the layer $`L`$ before activation is denoted $`Z^{(L)}`$. The output vector of the layer $`L`$ after activation is denoted $`A^{(L)}`$. By convention, we note $`A^{(0)}`$ the network input vector. Thus $`Z^{(L+1)} = W^{(L+1)}A^{(L)} + B^{(L+1)}`$ and $`A^{(L+1)} = \sigma\left(Z^{(L+1)}\right)`$. Let's consider a network with one hidden layer. Thus, the output is $`\hat{Y} = A^{(2)}`$.
 Let $`Y`$ be the labels (desired output). We use mean squared error (MSE) as the cost function. Thus, the cost is $`C = \frac{1}{N_{out}}\sum_{i=1}^{N_{out}} (\hat{y_i} - y_i)^2`$.
 
 1. Prove that $`\sigma' = \sigma \times (1-\sigma)`$
