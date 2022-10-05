@@ -1,4 +1,4 @@
-# Image Classification Tutorial
+# Tutorial 1 : Image Classification 
 
 MOD 4.6 Deep Learning & Artificial Intelligence: an introduction / Tutorial 1
 
