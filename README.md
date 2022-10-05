@@ -104,7 +104,7 @@ Let $`Y`$ be the labels (desired output). We use mean squared error (MSE) as the
 8. Similarly, express $`\frac{\partial C}{\partial W^{(1)}}`$ as a function of $`\frac{\partial C}{\partial Z^{(1)}}`$ and $`A^{(0)}`$.
 9. Similarly, express $`\frac{\partial C}{\partial B^{(1)}}`$ as a function of $`\frac{\partial C}{\partial Z^{(1)}}`$.
 
-Below is a Python code performing a forward pass and computing the cost in a network containing a hidden layer and using the sigmoid function as the activation function:
+Below is a Python code performing a forward pass and computing the cost in a network containing one hidden layer for the regression task. It uses  the sigmoid function as the activation function:
 
 ```python
 import numpy as np
