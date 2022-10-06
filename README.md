@@ -218,9 +218,9 @@ In this section, we present all the items on which the work is evaluated.
 - ( /1) The function `knn_predict` works as described
 - ( /1) The function `evaluate_knn` works as described
 - ( /1) The graph `knn.png` shows the results obtained
-- ( /1) The function `learn_once_mse` works as described
+- ( /1.5) The function `learn_once_mse` works as described
 - ( /1) The function `one_hot` works as described
-- ( /1) The function `learn_once_cross_entropy` works as described
+- ( /1.5) The function `learn_once_cross_entropy` works as described
 - ( /1) The function `evaluate_mlp` works as described
 - ( /1) The graph `mlp.png` shows the results obtained
 - ( /1) The project has a good README.
