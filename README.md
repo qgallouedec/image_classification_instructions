@@ -42,6 +42,8 @@ Your code must be properly documented. It must follow the [PEP257 recommendation
 
 ### Prepare your directory
 
+If you are not familiar with git, you can first follow this short [tutorial](https://gitlab.ec-lyon.fr/edelland/inf_tc2/-/blob/main/Tutoriel_gitlab/tutoriel_gitlab.md).
+
 1. Create a new blank project on the ECL GitLab (`New project` then `Create blank project`).
 2. Fill in the form as follows.
    - Project name: `Image classification`.
