@@ -86,7 +86,7 @@ This database can be obtained at the address https://www.cs.toronto.edu/~kriz/ci
       - `dists` the distance matrix between the train set and the test set,
       - `labels_train` the training labels, and
       - `k` the number of of neighbors.
-    This function must return the predicted labels for the elements of `data_train`.
+    This function must return the predicted labels for the elements of `data_test`.
 
     **Note:** if the memory occupation is too important, you can use several batches for the calculation of the distance matrix (loop on sub-batches of test data).
 3. Write the function `evaluate_knn` taking as parameters:
