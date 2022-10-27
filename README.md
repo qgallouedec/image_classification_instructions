@@ -179,7 +179,6 @@ We also need that the last activation layer of the network to be a softmax layer
 
     that perform one gradient descent step using a binary cross-entropy loss.
     We admit that $`\frac{\partial C}{\partial Z^{(2)}} = A^{(2)} - Y`$, where $`Y`$ is a one-hot vector encoding the label.
-
     The function must return:
       - `w1`, `b1`, `w2` and `b2` the updated weights and biases of the network,
       - `loss` the loss, for monitoring purpose.
