@@ -171,13 +171,15 @@ one_hot(labels=[1 2 0]) = [[0 1 0]
 We also need that the last activation layer of the network to be a softmax layer.
 
 11. Write the function `one_hot` taking a (n)-D array as parameters and returning the corresponding (n+1)-D one-hot matrix.
-12.   Write the function `learn_once_cross_entropy` taking as parameters:
+12. Write the function `learn_once_cross_entropy` taking as parameters:
       - `w1`, `b1`, `w2` and `b2` the weights and biases of the network,
       - `data` a matrix of shape (`batch_size` x `d_in`),
       - `labels_train` a vector of size `batch_size`, and
       - `learning_rate` the learning rate,
 
-    that perform one gradient descent step using a binary cross-entropy loss. We admit that $`\frac{\partial C}{\partial Z^{(2)}} = A^{(2)} - Y`$, where $`Y`$ is a one-hot vector encoding the label. The function must return:
+    that perform one gradient descent step using a binary cross-entropy loss.
+    We admit that $`\frac{\partial C}{\partial Z^{(2)}} = A^{(2)} - Y`$, where $`Y`$ is a one-hot vector encoding the label.
+    The function must return:
       - `w1`, `b1`, `w2` and `b2` the updated weights and biases of the network,
       - `loss` the loss, for monitoring purpose.
 13. Write the function `train_mlp` taking as parameters:
