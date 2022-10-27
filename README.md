@@ -160,29 +160,30 @@ print(loss)
       - `w1`, `b1`, `w2` and `b2` the updated weights and biases of the network,
       - `loss` the loss, for monitoring purpose.
 
-For the classification task, the target is the one-hot encoding of the label. Example: 
+
+MSE loss is not well suited for a classification task. Instead, we want to use the binary cross-entropy loss. To use this loss, we need the target to be is the one-hot encoding of the desired labels. Example:
 ```
 one_hot(labels=[1 2 0]) = [[0 1 0]
                            [0 0 1]
                            [1 0 0]]
 ```
 
-Instead of the MSE loss, we prefer to use a binary cross-entropy loss. We also want to replace the last activation layer of the network with a softmax layer.
+We also need that the last activation layer of the network to be a softmax layer.
 
 11. Write the function `one_hot` taking a (n)-D array as parameters and returning the corresponding (n+1)-D one-hot matrix.
-12. Write a function `learn_once_cross_entropy` taking the the same parameters as `learn_once_mse` and returns the same outputs. The function must use a cross entropy loss and the last layer of the network must be a softmax. We admit that $`\frac{\partial C}{\partial Z^{(2)}} = A^{(2)} - Y`$. Where $`Y`$ is a one-hot vector encoding the label.
-13.  Write the function `learn_once_cross_entropy` taking as parameters:
+12.   Write the function `learn_once_cross_entropy` taking as parameters:
       - `w1`, `b1`, `w2` and `b2` the weights and biases of the network,
       - `data` a matrix of shape (`batch_size` x `d_in`),
       - `labels_train` a vector of size `batch_size`, and
       - `learning_rate` the learning rate,
 
-    that perform one gradient descent step using a cross entropy loss. We alos want that the last layer of the network to be a softmax.
-    We admit that $`\frac{\partial C}{\partial Z^{(2)}} = A^{(2)} - Y`$. Where $`Y`$ is a one-hot vector encoding the label.
+    that perform one gradient descent step using a binary cross-entropy loss.
+    We admit that $`\frac{\partial C}{\partial Z^{(2)}} = A^{(2)} - Y`$, where $`Y`$ is a one-hot vector encoding the label.
+
     The function must return:
       - `w1`, `b1`, `w2` and `b2` the updated weights and biases of the network,
       - `loss` the loss, for monitoring purpose.
-14. Write the function `train_mlp` taking as parameters:
+13. Write the function `train_mlp` taking as parameters:
       - `w1`, `b1`, `w2` and `b2` the weights and biases of the network,
       - `data_train` a matrix of shape (`batch_size` x `d_in`),
       - `labels_train` a vector of size `batch_size`,
@@ -192,21 +193,21 @@ Instead of the MSE loss, we prefer to use a binary cross-entropy loss. We also w
     that perform `num_epoch` of training steps and returns:
       - `w1`, `b1`, `w2` and `b2` the updated weights and biases of the network,
       - `train_accuracies` the list of train accuracies across epochs as a list of floats.
-15. Write the function `test_mlp` taking as parameters:
+14. Write the function `test_mlp` taking as parameters:
       - `w1`, `b1`, `w2` and `b2` the weights and biases of the network,
       - `data_test` a matrix of shape (`batch_size` x `d_in`), and
       - `labels_test` a vector of size `batch_size`,
 
     testing the network on the test set and returns:
       - `test_accuracy` the testing accuracy.
-16. Write the function `run_mlp_training` taking as parameter:
+15. Write the function `run_mlp_training` taking as parameter:
       - `data_train`, `labels_train`, `data_test`, `labels_test`, the training and testing data,
       - `d_h` the number of neurons in the hidden layer
       - `learning_rate` the learning rate, and
       - `num_epoch` the number of training epoch,
 
     that train an MLP classifier and return the training accuracies across epochs as a list of floats and the final testing accuracy as a float.
-17. For `split_factor=0.9`, `d_h=64`, `learning_rate=0.1` and `num_epoch=100`, plot the evolution of learning accuracy across learning epochs. Save the graph as an image named `mlp.png` in the `results` directory.
+16. For `split_factor=0.9`, `d_h=64`, `learning_rate=0.1` and `num_epoch=100`, plot the evolution of learning accuracy across learning epochs. Save the graph as an image named `mlp.png` in the `results` directory.
 
 
 ## To go further
